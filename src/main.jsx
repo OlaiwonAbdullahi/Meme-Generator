@@ -3,9 +3,17 @@ import { createRoot } from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
 import { createStore } from "redux";
+import { Provider } from "react-redux";
+import rootReducer from "./reducers/index.jsx";
 
+const store = createStore(rootReducer);
+import { fetchMeme } from "./actions/Index.jsx";
+store.subscribe(() => console.log("store", store.getState));
+store.dispatch(fetchMeme());
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <App />
+    <Provider>
+      <App />
+    </Provider>
   </StrictMode>
 );
