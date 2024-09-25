@@ -15,7 +15,7 @@ const Form = () => {
               type="text"
               id="topText"
               placeholder="Top Text"
-              className=" border border-hrColor bg-bgColor mb-4 rounded-lg h-10 w-3/4 focus:outline-none placeholder:text-textColor placeholder:font-titalium placeholder:font-medium  placeholder:text-sm text-sm text-textColor font-titalium font-medium p-2"
+              className=" border border-hrColor bg-bgColor mb-4 rounded-lg h-10 w-full md:w-3/4 focus:outline-none placeholder:text-textColor placeholder:font-titalium placeholder:font-medium  placeholder:text-sm text-sm text-textColor font-titalium font-medium p-2"
             />
           </div>
 
@@ -31,7 +31,7 @@ const Form = () => {
               type="text"
               id="butomText"
               placeholder="Bottom Text"
-              className=" border border-hrColor bg-bgColor mb-4 rounded-lg h-10 w-3/4 focus:outline-none placeholder:text-textColor placeholder:font-titalium placeholder:font-medium placeholder:text-sm text-sm text-textColor font-titalium font-medium p-2"
+              className=" border border-hrColor bg-bgColor mb-4 rounded-lg h-10 w-full md:w-3/4 focus:outline-none placeholder:text-textColor placeholder:font-titalium placeholder:font-medium placeholder:text-sm text-sm text-textColor font-titalium font-medium p-2"
             />
           </div>
         </div>

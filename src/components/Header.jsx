@@ -6,7 +6,7 @@ const Header = () => {
       <div className="h-14 bg-bgColor p-2 flex justify-between px-5 top-0 sticky border-b-2 border-b-hrColor">
         <div className="flex gap-3">
           <img src={meme} alt="" />
-          <span className="text-textColor font-titalium mt-2">
+          <span className="text-textColor font-titalium mt-2 whitespace-nowrap">
             Abdul Meme Generator
           </span>
         </div>
