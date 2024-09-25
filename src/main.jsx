@@ -5,9 +5,9 @@ import "./index.css";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 import rootReducer from "./reducers/index.jsx";
+import { fetchMeme } from "./actions/Index.jsx";
 
 const store = createStore(rootReducer);
-import { fetchMeme } from "./actions/Index.jsx";
 store.subscribe(() => console.log("store", store.getState));
 store.dispatch(fetchMeme());
 createRoot(document.getElementById("root")).render(
