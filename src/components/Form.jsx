@@ -3,7 +3,7 @@ const Form = () => {
     <div className=" bg-bgColor  py-10">
       <form action="">
         <div className="flex flex-col md:flex-row justify-center mx-auto items-center">
-          <div className="w-1/2 flex flex-col justify-center mx-auto items-center">
+          <div className="w-full md:w-1/2 flex flex-col justify-center mx-auto items-center">
             <label
               htmlFor="topText"
               className="text-hrColor text-sm font-medium self-start ml-20 hidden md:flex"
@@ -19,7 +19,7 @@ const Form = () => {
             />
           </div>
 
-          <div className="w-1/2 flex flex-col justify-center mx-auto items-center">
+          <div className="w-full md:w-1/2 flex flex-col justify-center mx-auto items-center">
             <label
               htmlFor="butomText"
               className="text-hrColor text-sm font-medium self-start ml-20 hidden md:flex"
@@ -36,7 +36,7 @@ const Form = () => {
           </div>
         </div>
         <div className="flex w-full justify-center">
-          <button className="h-10 w-2/4 text-textColor bg-bgColor border border-hrColor rounded-lg mt-4 whitespace-nowrap">
+          <button className="h-10 w-2/3 md:w-2/4 text-textColor bg-bgColor border border-hrColor rounded-lg mt-4 whitespace-nowrap">
             Get a new meme image 🖼
           </button>
         </div>
