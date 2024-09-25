@@ -36,7 +36,7 @@ const Form = () => {
           </div>
         </div>
         <div className="flex w-full justify-center">
-          <button className="h-10 w-2/4 text-textColor bg-bgColor border border-hrColor rounded-lg mt-4">
+          <button className="h-10 w-2/4 text-textColor bg-bgColor border border-hrColor rounded-lg mt-4 whitespace-nowrap">
             Get a new meme image 🖼
           </button>
         </div>
