@@ -11,7 +11,7 @@ class MemeItem extends Component {
           alt={meme.name}
           className="meme-image w-full h-auto rounded mb-2"
         />
-        <p className="meme-name text-center text-lg font-semibold">
+        <p className="meme-name text-center text-sm font-semibold">
           {meme.name}
         </p>
       </div>
