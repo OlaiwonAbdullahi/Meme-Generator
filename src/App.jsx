@@ -3,6 +3,7 @@ import Form from "./components/Form";
 import Header from "./components/Header";
 import Output from "./components/Output";
 import { connect } from "react-redux";
+import MemeItem from "./components/MemeItem";
 
 class App extends Component {
   constructor() {
@@ -20,17 +21,24 @@ class App extends Component {
         <Header />
         <Form />
         <Output />
-        {/* Use slice to limit the number of memes displayed */}
-        {memes.slice(0, this.state.memeLimit).map((meme, index) => (
-          <h4 key={index}>{meme.name}</h4>
-        ))}
+
+        {/* Responsive grid layout with 4 columns on larger screens */}
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4 w-full">
+          {memes.slice(0, this.state.memeLimit).map((meme, index) => (
+            <MemeItem key={index} meme={meme} />
+          ))}
+        </div>
+
+        {/* Load More Button */}
         <div
-          className=""
+          className="mt-8 text-center cursor-pointer text-primary w-full mb-4"
           onClick={() => {
             this.setState({ memeLimit: this.state.memeLimit + 10 });
           }}
         >
-          Load More
+          <button className="bg-bgColor border border-hrColor w-28 h-10 rounded-lg">
+            Load More
+          </button>
         </div>
       </div>
     );
@@ -45,4 +53,4 @@ const mapStateToProps = (state) => {
 };
 
 // Connect the App component to the Redux store
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, null)(App);
