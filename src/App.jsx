@@ -9,11 +9,11 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      memeLimit: 10, // Limit for displaying memes
+      memeLimit: 10,
     };
   }
 
-  render() {
+  render({ text0, text1 }) {
     const { memes } = this.props; // Access memes from props passed via Redux
 
     return (
@@ -25,7 +25,12 @@ class App extends Component {
         {/* Responsive grid layout with 4 columns on larger screens */}
         <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4 w-full p-4">
           {memes.slice(0, this.state.memeLimit).map((meme, index) => (
-            <MemeItem key={index} meme={meme} />
+            <MemeItem
+              key={index}
+              meme={meme}
+              text0={this.state.text0}
+              text1={this.state.text1}
+            />
           ))}
         </div>
 
