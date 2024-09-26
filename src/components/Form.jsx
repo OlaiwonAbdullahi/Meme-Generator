@@ -90,7 +90,7 @@ const Form = () => {
       <div className="flex flex-col items-center justify-center mt-4 gap-4">
         {/* Fetch New Meme Button */}
         <button
-          className="h-10 w-full sm:w-3/4 md:w-1/2 lg:w-1/3 text-textColor bg-bgColor border border-hrColor rounded-lg shadow-xl text-lg"
+          className="h-10 w-full sm:w-3/4 md:w-1/2 lg:w-1/3 text-textColor bg-bgColor border border-hrColor rounded-lg shadow-xl text-lg font-titalium"
           onClick={fetchMeme}
         >
           Get a new meme image 🖼
@@ -109,7 +109,7 @@ const Form = () => {
 
             {/* Add Text Button */}
             <button
-              className="h-10 w-full sm:w-3/4 md:w-1/2 lg:w-1/3 text-textColor bg-bgColor border border-hrColor rounded-lg shadow-xl text-lg"
+              className="h-10 w-full sm:w-3/4 md:w-1/2 lg:w-1/3 text-textColor bg-bgColor border border-hrColor font-titalium rounded-lg shadow-xl text-lg"
               onClick={postMeme}
             >
               Add Text to Meme
