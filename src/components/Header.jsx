@@ -11,7 +11,9 @@ const Header = () => {
           </span>
         </div>
         <div className="">
-          <img src={github} alt="" className="h-10 w-10" />
+          <a href="https://github.com/OlaiwonAbdullahi/Meme-Generator">
+            <img src={github} alt="" className="h-10 w-10" />
+          </a>
         </div>
       </div>
     </>

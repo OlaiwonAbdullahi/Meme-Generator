@@ -52,7 +52,7 @@ const Form = () => {
         <div className="w-full md:w-1/2 flex flex-col justify-center items-center">
           <label
             htmlFor="topText"
-            className="text-hrColor text-sm font-medium self-start hidden md:flex"
+            className="text-hrColor text-sm font-medium self-start hidden md:flex ml-20"
           >
             Top Text
           </label>
@@ -71,7 +71,7 @@ const Form = () => {
         <div className="w-full md:w-1/2 flex flex-col justify-center items-center">
           <label
             htmlFor="bottomText"
-            className="text-hrColor text-sm font-medium self-start hidden md:flex"
+            className="text-hrColor text-sm font-medium self-start hidden md:flex ml-20"
           >
             Bottom Text
           </label>
