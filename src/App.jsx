@@ -23,7 +23,7 @@ class App extends Component {
         <Output />
 
         {/* Responsive grid layout with 4 columns on larger screens */}
-        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4 w-full">
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4 w-full p-4">
           {memes.slice(0, this.state.memeLimit).map((meme, index) => (
             <MemeItem key={index} meme={meme} />
           ))}
