@@ -5,7 +5,6 @@ const Form = () => {
   const [text1, setText1] = useState("");
   const [meme, setMeme] = useState(null);
 
-  // Fetch a random meme
   const fetchMeme = async () => {
     const response = await fetch("https://api.imgflip.com/get_memes");
     const data = await response.json();
@@ -14,7 +13,6 @@ const Form = () => {
     setMeme(randomMeme.url);
   };
 
-  // Draw meme image with text on a canvas
   const postMeme = () => {
     if (!meme) return;
 
@@ -25,21 +23,18 @@ const Form = () => {
     img.src = meme;
 
     img.onload = () => {
-      // Draw the image
-      ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas before redrawing
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
-      // Add top text
       ctx.font = "30px Arial";
       ctx.fillStyle = "white";
       ctx.textAlign = "center";
       ctx.strokeStyle = "black";
       ctx.lineWidth = 2;
 
-      ctx.strokeText(text0, canvas.width / 2, 40); // Stroke for outline
-      ctx.fillText(text0, canvas.width / 2, 40); // Fill color
+      ctx.strokeText(text0, canvas.width / 2, 40);
+      ctx.fillText(text0, canvas.width / 2, 40);
 
-      // Add bottom text
       ctx.strokeText(text1, canvas.width / 2, canvas.height - 20);
       ctx.fillText(text1, canvas.width / 2, canvas.height - 20);
     };
@@ -48,7 +43,6 @@ const Form = () => {
   return (
     <div className="bg-bgColor py-8 px-4 sm:px-10 lg:px-20">
       <div className="flex flex-col md:flex-row justify-center items-center gap-8">
-        {/* Top Text Input */}
         <div className="w-full md:w-1/2 flex flex-col justify-center items-center">
           <label
             htmlFor="topText"
@@ -88,7 +82,6 @@ const Form = () => {
       </div>
 
       <div className="flex flex-col items-center justify-center mt-4 gap-4">
-        {/* Fetch New Meme Button */}
         <button
           className="h-10 w-full sm:w-3/4 md:w-1/2 lg:w-1/3 text-textColor bg-bgColor border border-hrColor rounded-lg shadow-xl text-lg font-titalium"
           onClick={fetchMeme}
@@ -96,18 +89,15 @@ const Form = () => {
           Get a new meme image 🖼
         </button>
 
-        {/* Meme Canvas and Add Text Button */}
         {meme && (
           <div className="flex flex-col items-center gap-4 w-full">
-            {/* Canvas */}
             <canvas
               id="memeCanvas"
-              width="350" // Adjust canvas size for responsiveness
+              width="350"
               height="350"
               className="w-full sm:w-3/4 md:w-1/2 lg:w-1/3 border border-hrColor"
             ></canvas>
 
-            {/* Add Text Button */}
             <button
               className="h-10 w-full sm:w-3/4 md:w-1/2 lg:w-1/3 text-textColor bg-bgColor border border-hrColor font-titalium rounded-lg shadow-xl text-lg"
               onClick={postMeme}
