@@ -1,58 +1,121 @@
 import React, { useState } from "react";
 
 const Form = () => {
-  // Define state using useState hook for top and bottom text
   const [text0, setText0] = useState("");
   const [text1, setText1] = useState("");
+  const [meme, setMeme] = useState(null);
+
+  // Fetch a random meme
+  const fetchMeme = async () => {
+    const response = await fetch("https://api.imgflip.com/get_memes");
+    const data = await response.json();
+    const memes = data.data.memes;
+    const randomMeme = memes[Math.floor(Math.random() * memes.length)];
+    setMeme(randomMeme.url);
+  };
+
+  // Draw meme image with text on a canvas
+  const postMeme = () => {
+    if (!meme) return;
+
+    const canvas = document.getElementById("memeCanvas");
+    const ctx = canvas.getContext("2d");
+
+    const img = new Image();
+    img.src = meme;
+
+    img.onload = () => {
+      // Draw the image
+      ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas before redrawing
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+      // Add top text
+      ctx.font = "30px Arial";
+      ctx.fillStyle = "white";
+      ctx.textAlign = "center";
+      ctx.strokeStyle = "black";
+      ctx.lineWidth = 2;
+
+      ctx.strokeText(text0, canvas.width / 2, 40); // Stroke for outline
+      ctx.fillText(text0, canvas.width / 2, 40); // Fill color
+
+      // Add bottom text
+      ctx.strokeText(text1, canvas.width / 2, canvas.height - 20);
+      ctx.fillText(text1, canvas.width / 2, canvas.height - 20);
+    };
+  };
 
   return (
-    <div className="bg-bgColor py-10">
-      <div>
-        <div className="flex flex-col md:flex-row justify-center mx-auto items-center">
-          <div className="w-full md:w-1/2 flex flex-col justify-center mx-auto items-center">
-            <label
-              htmlFor="topText"
-              className="text-hrColor text-sm font-medium self-start ml-20 hidden md:flex"
-            >
-              Top Text
-            </label>
-
-            <input
-              type="text"
-              id="topText"
-              placeholder="Top Text"
-              value={text0}
-              onChange={(event) => setText0(event.target.value)}
-              className="border border-hrColor bg-bgColor mb-4 rounded-lg h-10 w-full md:w-3/4 focus:outline-none placeholder:text-textColor placeholder:font-titalium placeholder:font-medium placeholder:text-sm text-sm text-textColor font-titalium font-medium p-2 focus:bg-bgColor"
-            />
-          </div>
-
-          <div className="w-full md:w-1/2 flex flex-col justify-center mx-auto items-center">
-            <label
-              htmlFor="bottomText"
-              className="text-hrColor text-sm font-medium self-start ml-20 hidden md:flex"
-            >
-              Bottom Text
-            </label>
-
-            <input
-              type="text"
-              id="bottomText"
-              placeholder="Bottom Text"
-              value={text1}
-              onChange={(event) => setText1(event.target.value)} // use setText1 to update state
-              className="border border-hrColor bg-bgColor mb-4 rounded-lg h-10 w-full md:w-3/4 focus:outline-none placeholder:text-textColor placeholder:font-titalium placeholder:font-medium placeholder:text-sm text-sm text-textColor font-titalium font-medium p-2 focus:bg-bgColor"
-            />
-          </div>
-        </div>
-        <div className="flex w-full justify-center">
-          <button
-            className="h-10 w-2/3 md:w-2/4 text-textColor bg-bgColor border border-hrColor rounded-lg mt-4 whitespace-nowrap flex justify-center gap-2 items-center mx-auto shadow-xl text-lg backdrop-blur-md lg:font-semibold isolation-auto before:absolute before:w-full before:transition-all before:duration-700 before:hover:w-full before:-left-full before:hover:left-0 before:rounded-full before:bg-[#FFFFFF] hover:text-black before:-z-10 before:aspect-square before:hover:scale-200 before:hover:duration-500 relative px-4 py-2 overflow-hidden group font-titalium"
-            // onClick={handleGetImage} // Attach your function for fetching a meme image here
+    <div className="bg-bgColor py-8 px-4 sm:px-10 lg:px-20">
+      <div className="flex flex-col md:flex-row justify-center items-center gap-8">
+        {/* Top Text Input */}
+        <div className="w-full md:w-1/2 flex flex-col justify-center items-center">
+          <label
+            htmlFor="topText"
+            className="text-hrColor text-sm font-medium self-start hidden md:flex"
           >
-            Get a new meme image 🖼
-          </button>
+            Top Text
+          </label>
+
+          <input
+            type="text"
+            id="topText"
+            placeholder="Top Text"
+            value={text0}
+            onChange={(event) => setText0(event.target.value)}
+            className="border border-hrColor bg-bgColor mb-4 rounded-lg h-10 w-full md:w-3/4 lg:w-2/3 focus:outline-none placeholder:text-textColor text-sm p-2"
+          />
         </div>
+
+        {/* Bottom Text Input */}
+        <div className="w-full md:w-1/2 flex flex-col justify-center items-center">
+          <label
+            htmlFor="bottomText"
+            className="text-hrColor text-sm font-medium self-start hidden md:flex"
+          >
+            Bottom Text
+          </label>
+
+          <input
+            type="text"
+            id="bottomText"
+            placeholder="Bottom Text"
+            value={text1}
+            onChange={(event) => setText1(event.target.value)}
+            className="border border-hrColor bg-bgColor mb-4 rounded-lg h-10 w-full md:w-3/4 lg:w-2/3 focus:outline-none placeholder:text-textColor text-sm p-2"
+          />
+        </div>
+      </div>
+
+      <div className="flex flex-col items-center justify-center mt-4 gap-4">
+        {/* Fetch New Meme Button */}
+        <button
+          className="h-10 w-full sm:w-3/4 md:w-1/2 lg:w-1/3 text-textColor bg-bgColor border border-hrColor rounded-lg shadow-xl text-lg"
+          onClick={fetchMeme}
+        >
+          Get a new meme image 🖼
+        </button>
+
+        {/* Meme Canvas and Add Text Button */}
+        {meme && (
+          <div className="flex flex-col items-center gap-4 w-full">
+            {/* Canvas */}
+            <canvas
+              id="memeCanvas"
+              width="350" // Adjust canvas size for responsiveness
+              height="350"
+              className="w-full sm:w-3/4 md:w-1/2 lg:w-1/3 border border-hrColor"
+            ></canvas>
+
+            {/* Add Text Button */}
+            <button
+              className="h-10 w-full sm:w-3/4 md:w-1/2 lg:w-1/3 text-textColor bg-bgColor border border-hrColor rounded-lg shadow-xl text-lg"
+              onClick={postMeme}
+            >
+              Add Text to Meme
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
