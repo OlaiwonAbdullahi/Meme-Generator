@@ -32,8 +32,8 @@ class App extends Component {
         <Header />
         {/* Pass the updateText function as a prop to Form */}
         <Form updateText={this.updateText} />
-        <Output />
-        {/* Responsive grid layout with 3 to 6 columns depending on screen size 
+        {/* <Output />
+        Responsive grid layout with 3 to 6 columns depending on screen size 
         <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4 w-full p-4">
           {memes.slice(0, memeLimit).map((meme, index) => (
             <MemeItem
