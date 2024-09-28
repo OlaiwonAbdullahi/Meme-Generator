@@ -105,8 +105,8 @@ const Form = () => {
             >
               Add Text to Meme
             </button>
-            <button className="flex">
-              <img src={Download} alt="" className="h-10 w-10" />{" "}
+            <button className="flex items-center justify-center gap-2 h-10 p-3 w-full sm:w-3/4 md:w-1/2 lg:w-1/3 text-textColor bg-bgColor border border-hrColor font-titalium rounded-lg shadow-xl text-lg">
+              <img src={Download} alt="Download icon" className="h-6 w-6" />
               <span className="text-textColor">Download</span>
             </button>
           </div>
