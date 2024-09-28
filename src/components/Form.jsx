@@ -41,6 +41,13 @@ const Form = () => {
     };
   };
 
+  const downloadMeme = () => {
+    const canvas = document.getElementById("memeCanvas");
+    const link = document.createElement("a");
+    link.href = canvas.toDataURL("image/png"); // Convert canvas content to data URL
+    link.download = "meme.png"; // Set the file name for download
+    link.click(); // Trigger the download
+  };
   return (
     <div className="bg-bgColor py-8 px-4 sm:px-10 lg:px-20">
       <div className="flex flex-col md:flex-row justify-center items-center gap-8">
@@ -105,7 +112,10 @@ const Form = () => {
             >
               Add Text to Meme
             </button>
-            <button className="flex items-center justify-center gap-2 h-10 p-3 w-full sm:w-3/4 md:w-1/2 lg:w-1/3 text-textColor bg-bgColor border border-hrColor font-titalium rounded-lg shadow-xl text-lg">
+            <button
+              className="flex items-center justify-center gap-2 h-10 p-3 w-full sm:w-3/4 md:w-1/2 lg:w-1/3 text-textColor bg-bgColor border border-hrColor font-titalium rounded-lg shadow-xl text-lg"
+              onClick={downloadMeme}
+            >
               <img src={Download} alt="Download icon" className="h-6 w-6" />
               <span className="text-textColor">Download</span>
             </button>
