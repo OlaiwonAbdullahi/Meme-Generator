@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Download from "../assets/download.svg";
 
 const Form = () => {
   const [text0, setText0] = useState("");
@@ -103,6 +104,10 @@ const Form = () => {
               onClick={postMeme}
             >
               Add Text to Meme
+            </button>
+            <button className="flex">
+              <img src={Download} alt="" className="h-10 w-10" />{" "}
+              <span className="text-textColor">Download</span>
             </button>
           </div>
         )}
