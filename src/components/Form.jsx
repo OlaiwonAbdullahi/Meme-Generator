@@ -65,7 +65,7 @@ const Form = () => {
             placeholder="Top Text"
             value={text0}
             onChange={(event) => setText0(event.target.value)}
-            className="border border-hrColor bg-bgColor mb-4 rounded-lg h-10 w-full md:w-3/4 lg:w-2/3 focus:outline-none placeholder:text-textColor text-sm p-2"
+            className="border border-hrColor bg-bgColor mb-4 rounded-lg h-10 w-full md:w-3/4 lg:w-2/3 focus:outline-none placeholder:text-textColor text-sm p-2 text-textColor"
           />
         </div>
 
@@ -84,7 +84,7 @@ const Form = () => {
             placeholder="Bottom Text"
             value={text1}
             onChange={(event) => setText1(event.target.value)}
-            className="border border-hrColor bg-bgColor mb-4 rounded-lg h-10 w-full md:w-3/4 lg:w-2/3 focus:outline-none placeholder:text-textColor text-sm p-2"
+            className="border border-hrColor bg-bgColor mb-4 rounded-lg h-10 w-full md:w-3/4 lg:w-2/3 focus:outline-none placeholder:text-textColor text-textColor text-sm p-2"
           />
         </div>
       </div>
